@@ -214,7 +214,7 @@ height: 65px;
         <div class="u-container-style u-expanded-width u-grey-15 u-group u-radius u-shape-round u-group-1">
           <div class="u-container-layout u-container-layout-1">
             <div class="u-expanded-width u-form u-form-radios-spacing-83 u-form-1">
-                  <form class="u-clearfix u-form-spacing-30 u-form-vertical u-inner-form" style="padding: 10px" id="form" source="email" name="form" onsubmit="submitbutton.value='Please be patient while your file is uploading..'">
+                  <form class="u-clearfix u-form-spacing-30 u-form-vertical u-inner-form" style="padding: 10px" id="form" source="email" name="form" onsubmit="submitbutton.value='Thank you!'">
             <div class="u-form-group u-form-name">
               <label for="name-319a" class="u-custom-font u-font-courier-new u-label u-label-1">Your Name</label>
               <input type="text" placeholder="Enter your Name" id="name-319a" name="name" class="u-border-2 u-border-no-left u-border-no-right u-border-no-top u-border-white u-input u-input-rectangle u-radius u-text-body-color u-input-1" required="">
@@ -257,59 +257,6 @@ height: 65px;
             <input type="hidden" value="" name="recaptchaResponse">
             <input type="hidden" name="formServices" value="Please refresh page">
           </form>
-		<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbyARZswO6TkMwpCvrxghLLatV3c2ysbOyMpjHD7VqQjOhRYln62jjOM9oTf5eq1vPrIyQ/exec'
-  const form = document.forms['form']
-
-  form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success', response))
-      .catch(error => console.error('Error!', error.message))
-	  
-  })
-	// This line declares a variable called "url" and assigns it a value of "Api_Endpoint_Url"
-    let url = "https://script.google.com/macros/s/AKfycbwgeSXOJsioaOAN-v7ZGvFpYd0pZQo_aCxNx7WPgAsTiHrrdZO7d5IvxmdRi2f5rF1vlQ/exec";
-    // This line declares a variable called "file" and assigns it the value of the first input element on the page
-    let file = document.querySelector('input[name="text"]');
-    // This line declares a variable called "img" and assigns it the value of the first image element on the page
-    let img = document.querySelector("img");
-    // This line adds an event listener to the "change" event of the "file" input element
-    file.addEventListener('change',()=>{
-        // This line creates a new FileReader object called "fr"
-        let fr = new FileReader();
-        // This line adds an event listener to the "loadend" event of the FileReader object
-        fr.addEventListener('loadend',()=>{
-            // This line declares a variable called "res" and assigns it the result of the FileReader object
-            let res = fr.result;
-            // This line sets the "src" attribute of the "img" element to the value of "res"
-            img.src=res;
-            // This line splits the "res" variable into an array, using the string "base64," as the separator, and assigns the second element to a variable called "spt"
-            let spt = res.split("base64,")[1];
-            // This line creates an object called "obj" with three properties: "base64", "type", and "name"
-            let obj = {
-                base64:spt,
-                type:file.files[0].type,
-                name:file.files[0].name
-            }
-            // This line sends a POST request to the URL specified in the "url" variable, with the "obj" object as the request body
-            fetch(url,{
-                method:"POST",
-                body:JSON.stringify(obj)
-            })
-            // This line waits for the response from the server and converts it to text
-            .then(r=>r.text())
-            // This line logs the response data to the console
-            .then(data=>document.querySelector('input[name="submitbutton"]').value = data)
-		 
-	
-	         
-		
-        })
-        // This line reads the selected file as a data URL
-        fr.readAsDataURL(file.files[0])
-    })
-</script>
             </div>
           </div>
         </div>
